@@ -142,13 +142,10 @@ module Sequel::Plugins::Geocoder
     def geocoder_select_ds(columns, distance = false, bearing = false, distance_column = :distance, bearing_column = :bearing)
       return select(self.primary_key) if columns == :id_only
 
-      selects = []
-      selects += columns.map(&:to_sym) if columns.respond_to?(:map)
+      selects = columns.respond_to?(:map) ? columns.map(&:to_sym) : model.columns
       selects << Sequel.as(distance, distance_column) if distance != false
       selects << Sequel.as(bearing, bearing_column) if bearing != false
-
-      select_method = (columns == :geo_only) ? :select : :select_append
-      self.__send__(select_method, *selects)
+      select(*selects)
     end
 
     # Exists just to DRY things up a bit.
