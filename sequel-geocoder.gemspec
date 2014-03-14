@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'sequel-geocoder'
-  s.version     = '0.1.0'
-  s.date        = '2014-03-04'
+  s.version     = '0.1.1'
+  s.date        = '2014-03-14'
   s.summary     = 'Allows Sequel models to be used with the Geocoder gem.'
   s.description = s.summary
   s.author      = 'Joshua Hansen'
