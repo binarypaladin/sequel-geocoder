@@ -28,7 +28,8 @@ module Sequel::Plugins::Geocoder
 
     private
     def geocoder_init(options)
-      dataset.geocoder_options = options
+      dataset.geocoder_options ||= {}
+      dataset.geocoder_options.merge! options
     end
   end
 end
